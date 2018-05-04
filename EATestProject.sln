@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EATestProject", "EATestProject\EATestProject.csproj", "{DD220FE8-C37F-4DF3-BE78-68E4D544A1AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAAutoFramework", "EATestProject\EAAutoFramework.csproj", "{DD220FE8-C37F-4DF3-BE78-68E4D544A1AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAEmployeeTest", "EAEmployeeTest\EAEmployeeTest.csproj", "{BE9561B5-B38C-4987-A4D8-C62E818B44C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DD220FE8-C37F-4DF3-BE78-68E4D544A1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD220FE8-C37F-4DF3-BE78-68E4D544A1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD220FE8-C37F-4DF3-BE78-68E4D544A1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9561B5-B38C-4987-A4D8-C62E818B44C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9561B5-B38C-4987-A4D8-C62E818B44C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9561B5-B38C-4987-A4D8-C62E818B44C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9561B5-B38C-4987-A4D8-C62E818B44C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

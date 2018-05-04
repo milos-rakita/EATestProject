@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EATestProject
+namespace EAAutoFramework.Base
 {
-    public class Class1
+    class Browser
     {
     }
 }
