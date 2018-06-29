@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<EAAutoFramework>
+  <RunSettings>
+    <AUT>http://www.gcreddy.com/project1/admin/login.php</AUT>
+    <Browser>Chrome</Browser>
+    <!--Posible flag Smoke, Regression, Unit--> 
+    <TestType>SmokeTest</TestType>
+    <!--Possible Flag Y, N-->
+    <IsLog>Y</IsLog>
+    <LogPath>D:\\QATest\\</LogPath>
+    <BuildName>DemoBuild</BuildName>
+    <!--Possible Flag Y, N-->
+    <IsReport>N</IsReport>
+    <UserName>EAutoTeam</UserName>
+    <!--Possible flag Selenium, Specflow-->
+    <Tehnology>Selenium</Tehnology>
+  </RunSettings>
+</EAAutoFramework>

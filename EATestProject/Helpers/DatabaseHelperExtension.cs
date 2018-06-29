@@ -44,21 +44,38 @@ namespace EAAutoFramework.Helpers
 
 
         //execution
-        public static void ExecuteQuery(this SqlConnection sqlConnection,string queryString)
+        public static DataTable ExecuteQuery(this SqlConnection sqlConnection,string queryString)
         {
             DataSet dataSet;
             try
             {
                 //checking state of connection
-                if (sqlConnection == null || ((sqlConnection != null && (sql))))
+                if (sqlConnection == null || ((sqlConnection != null && (sqlConnection.State == ConnectionState.Closed || 
+                    sqlConnection.State == ConnectionState.Broken))))
                 {
-
+                    sqlConnection.Open();
                 }
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                sqlDataAdapter.SelectCommand = new SqlCommand(queryString, sqlConnection);
+                sqlDataAdapter.SelectCommand.CommandType = CommandType.Text;
+
+                dataSet = new DataSet();
+                sqlDataAdapter.Fill(dataSet, "table");
+                sqlConnection.Close();
+                return dataSet.Tables["table"];
+
             }
             catch (Exception e)
             {
-
-                throw;
+                dataSet = null;
+                sqlConnection.Close();
+                LogHelpers.Write("Error :: " + e.Message);
+                return null;
+            }
+            finally
+            {
+                dataSet = null;
+                sqlConnection.Close();
             }
 
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 
 namespace EAAutoFramework.Helpers
 {
@@ -33,14 +34,32 @@ namespace EAAutoFramework.Helpers
 
         private static DataTable ExcelToDataTable(string fileName)
         {
-            FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-            excelReader.IsFirstRowAsColumnNames = true;
-            DataSet result = excelReader.AsDataSet();
-            DataTableCollection table = result.Tables;
-            DataTable resultTable = table["Sheet1"];
+            using (var stream = File.Open(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    var result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                    {
+                        ConfigureDataTable = (data) => new ExcelDataTableConfiguration()
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+                    DataTableCollection table = result.Tables;
+                    DataTable resultTable = table["Sheet1"];
 
-            return resultTable;
+                    return resultTable;
+                }
+            }
+
+            //FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
+            //IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+            //excelReader.IsFirstRowAsColumnNames = true;
+            //DataSet result = excelReader.AsDataSet();
+            //DataTableCollection table = result.Tables;
+            //DataTable resultTable = table["Sheet1"];
+
+            //return resultTable;
 
         }
 
@@ -49,8 +68,8 @@ namespace EAAutoFramework.Helpers
             try
             {
                 string data = (from colData in _dataColl
-                               where colData.colName == columnName && colData.rowNumber == rowNumber
-                               select colData.colValue).SingleOrDefault();
+                               where colData.colVal == columnName && colData.rowNumber == rowNumber
+                               select colData.colVal).SingleOrDefault();
 
                 //var datas = dataCol.where(x => x.colName == columnName && x.rowNumber == rowNumber).SingleOrDefault();
 

@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace EAAutoFramework.Base
 {
-    class BaseStep
+    public abstract class BaseStep : Base
     {
+        public virtual void NavigateSite()
+        {
+            DriverContext.Browser.GoToUrl(Settings.AUT);
+            LogHelpers.Write("Opened the browser !!!");
+        }
+
+
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EAAutoFramework.Base;
+using EAAutoFramework.Extensions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -39,6 +40,11 @@ namespace EAEmployeeTest.Pages
         {
             lbtCustomerPage.Click();
             return GetInstance<CustomersPage>();
+        }
+
+        internal void CheckIfLoginExist()
+        {
+            txtUserName.AssertElemnetPresent();
         }
     }
 }
